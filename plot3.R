@@ -2,11 +2,18 @@ library(lubridate)
 library(dplyr)
 library(tidyr)
 
-#read data file
+
+#download and unzip data file in the current working directory from this location:
+#<b>Dataset</b>: 
+#  <a href="https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip">Electric power consumption</a> [20Mb]
+
+#now read data file
+#check if file is located in the current working directory
 
 if (!file.exists("household_power_consumption.txt")){
   stop("Error, file household_power_consumption.txt not found in current directory")
 }
+
 
 df.all<- read.csv("household_power_consumption.txt", sep=";", stringsAsFactors=FALSE)
 
@@ -27,7 +34,11 @@ newdf<-df.subset
 
 #make the plot and save png file
 
-png("plot3.png",width = 480, height = 480,bg="transparent")
+if (!file.exists("figure")){
+  dir.create("figure")
+}
+
+png("figure/plot3.png",width = 480, height = 480,bg="transparent")
 plot(newdf$datetime,newdf$Sub_metering_1,type='l',ylab="Energy sub metering",xlab="")
 points(newdf$datetime,newdf$Sub_metering_2,type='l',col='red')
 points(newdf$datetime,newdf$Sub_metering_3,type='l',col='blue')
