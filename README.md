@@ -45,8 +45,8 @@ For each plot you should:
 
 * Source individual R code files to recreate plots (e.g, source("plot1.R")).
 
-* There are four separate R code file (`plot1.R`, `plot2.R`, etc.) that
-constructs the corresponding plots, i.e. code in `plot1.R` constructs
+* There are four separate R code files (`plot1.R`, `plot2.R`, etc.) that
+construct the corresponding plots, i.e. code in `plot1.R` constructs
 the `plot1.png` plot. 
 
 * After successful completion of the script, plots in PNG format are saved in the `figure` folder. Each plot has a width of 480 pixels and a height of 480 pixels.
