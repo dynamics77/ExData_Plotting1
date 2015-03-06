@@ -2,19 +2,22 @@ library(lubridate)
 library(dplyr)
 library(tidyr)
 
+#make sure requried packagees are installed and loaded
+if(!require(dplyr) | !require(lubridate) | !require(tidyr)) {
+  stop('The required packages not installed')
+}
 
 #download and unzip data file in the current working directory from this location:
-#<b>Dataset</b>: 
-#  <a href="https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip">Electric power consumption</a> [20Mb]
+#Dataset: 
+#  https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip
 
-#now read data file
 #check if file is located in the current working directory
 
 if (!file.exists("household_power_consumption.txt")){
   stop("Error, file household_power_consumption.txt not found in current directory")
 }
 
-
+#now read data file
 df.all<- read.csv("household_power_consumption.txt", sep=";", stringsAsFactors=FALSE)
 
 #tidy data for plotting using dplyr chaining
@@ -32,11 +35,14 @@ df.subset$datetime<-strptime(df.subset$datetime, "%d/%m/%Y %H:%M:%S")
 #copy df.subet to newdf. Use this (newdf) final dataframe to make plots in base R.
 newdf<-df.subset
 
-#make the plot and save png file
+
+#create a figure folder if it does not exist 
 
 if (!file.exists("figure")){
   dir.create("figure")
 }
+
+#make the figure and save a png format file in the figure folder
 
 png("figure/plot3.png",width = 480, height = 480,bg="transparent")
 plot(newdf$datetime,newdf$Sub_metering_1,type='l',ylab="Energy sub metering",xlab="")
