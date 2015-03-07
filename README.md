@@ -57,5 +57,9 @@ the `plot1.png` plot.
 
 * Data file is unziped and located in the current working directory.
 
+* My final plots (`plot1.png`, `plot2.png`, etc) are in `figure` folder. 
+
+* Files named unnamed-chunk-* etc are original figures from the forked repo. 
+
 ##Acknowledgements:
 I thank Dr. Peng for providing clean dataset as well as original README file with the detailed description of the variables in the dataset. I have only slighlty modified his README file.
